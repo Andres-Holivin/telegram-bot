@@ -21,9 +21,14 @@ def respond():
     print("got text message:", text)
     if text == '/start':
         bot_welcome = """
-        Welcome to coolAvatar bot, the bot is using the service from http://avatars.adorable.io/ to generate cool looking avatars based on the name you enter so please enter a name and the bot will reply with an avatar for your name.
+        Welcome to coolAvatar bot, the bot is using the service from http://avatars.adorable.io/ to 
+        generate cool looking avatars based on the name you enter so please enter a name and the bot will 
+        reply with an avatar for your name.
         """
         bot.sendMessage(chat_id=chat_id, text=bot_welcome, reply_to_message_id=msg_id)
+    elif text == 'andres':
+        bot_text="this my bot for testing"
+        bot.sendMessage(chat_id=chat_id,text=bot_text,reply_to_message_id=msg_id)
     else:
         try:
             text = re.sub(r"\w", "_", text)
@@ -35,6 +40,8 @@ def respond():
                             reply_to_message_id=msg_id)
 
     return 'ok'
+
+
 @app.route('/setwebhook', methods=['GET', 'POST'])
 def set_webhook():
     s = bot.setWebhook('{URL}{HOOK}'.format(URL=URL, HOOK=TOKEN))
@@ -42,8 +49,12 @@ def set_webhook():
         return "webhook setup ok"
     else:
         return "webhook setup failed"
+
+
 @app.route('/')
 def index():
     return '.'
+
+
 if __name__ == '__main__':
     app.run(threaded=True)
