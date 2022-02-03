@@ -27,8 +27,11 @@ def respond():
         """
         bot.sendMessage(chat_id=chat_id, text=bot_welcome, reply_to_message_id=msg_id)
     elif text == 'andres':
-        bot_text="this my bot for testing"
-        bot.sendMessage(chat_id=chat_id,text=bot_text,reply_to_message_id=msg_id)
+        bot_text = "this my bot for testing"
+        bot.sendMessage(chat_id=chat_id, text=bot_text, reply_to_message_id=msg_id)
+    elif text == 'holivin':
+        bot_text = "just try it"
+        bot.sendMessage(chat_id=chat_id, text=bot_text, reply_to_message_id=msg_id)
     else:
         try:
             text = re.sub(r"\w", "_", text)
